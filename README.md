@@ -2,6 +2,21 @@
 
 A CakePHP 5.x plugin that intercepts all outgoing emails and redirects them to a specified address. Perfect for development and staging environments where you want to test email functionality without sending emails to real users.
 
+## Why Use This Plugin?
+
+When developing or testing applications that send emails, you need a way to prevent emails from reaching real users. There are several approaches:
+
+**Paid services** like Mailtrap or Mailosaur work great but require subscriptions and external dependencies.
+
+**Local tools** like Mailpit, MailHog, or MailCatcher are excellent free alternatives, but they require local installation and configuration - which isn't always possible in shared hosting environments, Docker-less setups, or restricted infrastructure.
+
+**This plugin** offers a zero-infrastructure solution:
+- No additional services to install or maintain
+- Works with your existing email transport (SMTP, Mailgun, SES, etc.)
+- Simple configuration change - just wrap your existing transport
+- Ideal for shared staging environments where installing local tools isn't an option
+- Perfect for quick local development without setting up additional services
+
 ## Features
 
 - Redirects all outgoing emails to a single address
@@ -92,6 +107,24 @@ Intercepted email:
 - Subject: `[DEV] Your Order Confirmation [to: user@example.com]`
 - Header `X-Original-To`: `user@example.com`
 - Header `X-Original-Cc`: `manager@example.com`
+
+## Recommended: Use Plus-Addressed Emails
+
+We recommend using plus-addressed (subaddressed) emails for intercepted mail:
+
+```php
+'to' => 'dev+projectname@example.com',
+// or with environment identifier
+'to' => 'dev+myapp-staging@example.com',
+```
+
+**Benefits of plus addressing:**
+- **Easy filtering** - Create inbox rules to automatically sort intercepted emails by project or environment
+- **Quick identification** - Instantly see which project/environment an email came from
+- **Single inbox** - Use one email account for all projects without mixing emails
+- **No extra accounts** - No need to create separate email addresses for each project
+
+Most email providers support plus addressing, including Gmail, Outlook, ProtonMail, Fastmail, and others.
 
 ## Environment-Based Configuration
 
