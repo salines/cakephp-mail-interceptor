@@ -68,7 +68,7 @@ Configure the transport in your `config/app_local.php`:
         'className' => \MailInterceptor\Mailer\Transport\InterceptTransport::class,
         'transport' => 'smtp', // The underlying transport to use
         'to' => 'dev@example.com', // Where all emails will be redirected
-        'subjectPrefix' => '[DEV] ', // Optional: prefix for subject line
+        'subjectPrefix' => 'DEV', // Optional: tag for subject line
         'includeOriginalInSubject' => true, // Optional: add original recipients to subject
         'logInterceptions' => true, // Optional: log intercepted emails
     ],
@@ -81,8 +81,8 @@ Configure the transport in your `config/app_local.php`:
 |--------|------|---------|-------------|
 | `transport` | string | *required* | Name of the underlying transport to use for sending |
 | `to` | string | *required* | Email address where all emails will be redirected |
-| `subjectPrefix` | string | `'[INTERCEPTED] '` | Prefix added to email subject |
-| `includeOriginalInSubject` | bool | `true` | Whether to append original recipients to subject |
+| `subjectPrefix` | string | `'INTERCEPTED'` | Tag used in subject line prefix |
+| `includeOriginalInSubject` | bool | `true` | Whether to include original recipients in subject prefix |
 | `logInterceptions` | bool | `true` | Whether to log intercepted emails |
 
 ## How It Works
@@ -104,7 +104,7 @@ Original email:
 
 Intercepted email:
 - To: `dev@example.com`
-- Subject: `[DEV] Your Order Confirmation [to: user@example.com]`
+- Subject: `[DEV: user@example.com] Your Order Confirmation`
 - Header `X-Original-To`: `user@example.com`
 - Header `X-Original-Cc`: `manager@example.com`
 

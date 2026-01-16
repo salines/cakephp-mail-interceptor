@@ -309,7 +309,7 @@ class InterceptTransportTest extends TestCase
         $this->transport->setConfig([
             'transport' => 'test_underlying',
             'to' => 'intercept@example.com',
-            'subjectPrefix' => '[TEST] ',
+            'subjectPrefix' => 'TEST',
             'includeOriginalInSubject' => false,
             'logInterceptions' => false,
         ]);
@@ -347,14 +347,14 @@ class InterceptTransportTest extends TestCase
     }
 
     /**
-     * Test original recipients are included in subject
+     * Test original recipients are included in subject with prefix
      */
     public function testOriginalRecipientsIncludedInSubject(): void
     {
         $this->transport->setConfig([
             'transport' => 'test_underlying',
             'to' => 'intercept@example.com',
-            'subjectPrefix' => '',
+            'subjectPrefix' => 'DEV',
             'includeOriginalInSubject' => true,
             'logInterceptions' => false,
         ]);
@@ -366,7 +366,7 @@ class InterceptTransportTest extends TestCase
 
         $this->transport->send($message);
 
-        $this->assertEquals('Original Subject [to: original@example.com]', $message->getSubject());
+        $this->assertEquals('[DEV: original@example.com] Original Subject', $message->getSubject());
     }
 
     /**
@@ -377,7 +377,7 @@ class InterceptTransportTest extends TestCase
         $this->transport->setConfig([
             'transport' => 'test_underlying',
             'to' => 'intercept@example.com',
-            'subjectPrefix' => '[TEST] ',
+            'subjectPrefix' => 'TEST',
             'includeOriginalInSubject' => false,
             'logInterceptions' => false,
         ]);
@@ -496,7 +496,7 @@ class InterceptTransportTest extends TestCase
         $this->transport->setConfig([
             'transport' => 'test_underlying',
             'to' => $interceptEmail,
-            'subjectPrefix' => '[DEV] ',
+            'subjectPrefix' => 'DEV',
             'includeOriginalInSubject' => true,
             'logInterceptions' => false,
         ]);
@@ -528,7 +528,7 @@ class InterceptTransportTest extends TestCase
         $this->assertEquals('bcc@example.com', $headers['X-Original-Bcc']);
 
         // Verify subject
-        $this->assertEquals('[DEV] Important Email [to: user@example.com]', $message->getSubject());
+        $this->assertEquals('[DEV: user@example.com] Important Email', $message->getSubject());
     }
 }
 
