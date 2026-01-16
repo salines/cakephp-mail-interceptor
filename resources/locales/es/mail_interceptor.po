@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+
+msgid "InterceptTransport requires \"transport\" config option to specify the underlying transport."
+msgstr "InterceptTransport requiere la opción de configuración \"transport\" para especificar el transporte subyacente."
+
+msgid "InterceptTransport requires \"to\" config option to specify the intercept email address."
+msgstr "InterceptTransport requiere la opción de configuración \"to\" para especificar la dirección de correo de interceptación."
+
+msgid "Mail intercepted: redirected to=%s; original_to=%s; subject=%s"
+msgstr "Correo interceptado: redirigido a=%s; original_to=%s; asunto=%s"
+
+msgid "InterceptTransport: underlying transport failed: {0}"
+msgstr "InterceptTransport: falló el transporte subyacente: {0}"

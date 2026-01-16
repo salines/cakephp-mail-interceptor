@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+
+msgid "InterceptTransport requires \"transport\" config option to specify the underlying transport."
+msgstr "InterceptTransport 需要配置选项 \"transport\" 来指定底层传输方式。"
+
+msgid "InterceptTransport requires \"to\" config option to specify the intercept email address."
+msgstr "InterceptTransport 需要配置选项 \"to\" 来指定拦截邮箱地址。"
+
+msgid "Mail intercepted: redirected to=%s; original_to=%s; subject=%s"
+msgstr "邮件已拦截：已重定向到=%s；original_to=%s；subject=%s"
+
+msgid "InterceptTransport: underlying transport failed: {0}"
+msgstr "InterceptTransport：底层传输失败：{0}"

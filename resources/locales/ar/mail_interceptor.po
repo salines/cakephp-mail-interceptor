@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+
+msgid "InterceptTransport requires \"transport\" config option to specify the underlying transport."
+msgstr "يتطلب InterceptTransport خيار الإعداد \"transport\" لتحديد وسيلة النقل الأساسية."
+
+msgid "InterceptTransport requires \"to\" config option to specify the intercept email address."
+msgstr "يتطلب InterceptTransport خيار الإعداد \"to\" لتحديد عنوان البريد الإلكتروني للاعتراض."
+
+msgid "Mail intercepted: redirected to=%s; original_to=%s; subject=%s"
+msgstr "تم اعتراض البريد: تم التحويل إلى=%s؛ original_to=%s؛ الموضوع=%s"
+
+msgid "InterceptTransport: underlying transport failed: {0}"
+msgstr "InterceptTransport: فشل النقل الأساسي: {0}"

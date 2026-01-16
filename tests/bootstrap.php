@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 /**
@@ -8,6 +7,7 @@ declare(strict_types=1);
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Log\Log;
 
@@ -16,6 +16,13 @@ if (!Log::getConfig('default')) {
     Log::setConfig('default', [
         'className' => 'Array',
         'levels' => ['info', 'error', 'warning', 'debug'],
+    ]);
+}
+
+if (!Cache::getConfig('_cake_core_')) {
+    Cache::setConfig('_cake_core_', [
+        'className' => 'Array',
+        'prefix' => 'mail_interceptor_tests_',
     ]);
 }
 

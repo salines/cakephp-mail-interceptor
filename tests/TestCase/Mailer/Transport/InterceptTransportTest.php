@@ -1,11 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace MailInterceptor\Test\TestCase\Mailer\Transport;
 
 use Cake\Log\Log;
-use Cake\Mailer\AbstractTransport;
 use Cake\Mailer\Message;
 use Cake\Mailer\TransportFactory;
 use InvalidArgumentException;
@@ -483,7 +481,6 @@ class InterceptTransportTest extends TestCase
 
         $result = $this->transport->send($message);
 
-        $this->assertIsArray($result);
         $this->assertArrayHasKey('mock_sent', $result);
     }
 
@@ -529,24 +526,5 @@ class InterceptTransportTest extends TestCase
 
         // Verify subject
         $this->assertEquals('[DEV: user@example.com] Important Email', $message->getSubject());
-    }
-}
-
-/**
- * Mock Transport for testing
- */
-class MockTransport extends AbstractTransport
-{
-    /**
-     * @param Message $message Message to send
-     * @return array
-     */
-    public function send(Message $message): array
-    {
-        return [
-            'mock_sent' => true,
-            'headers' => $message->getHeaders(),
-            'to' => $message->getTo(),
-        ];
     }
 }

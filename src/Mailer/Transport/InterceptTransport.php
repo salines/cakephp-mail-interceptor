@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace MailInterceptor\Mailer\Transport;
@@ -10,6 +9,7 @@ use Cake\Mailer\Message;
 use Cake\Mailer\TransportFactory;
 use InvalidArgumentException;
 use Throwable;
+use function Cake\I18n\__d;
 
 /**
  * Intercept Transport
@@ -45,14 +45,20 @@ class InterceptTransport extends AbstractTransport
         $transport = $this->getConfig('transport');
         if (!is_string($transport) || $transport === '') {
             throw new InvalidArgumentException(
-                'InterceptTransport requires "transport" config option to specify the underlying transport.'
+                __d(
+                    'mail_interceptor',
+                    'InterceptTransport requires "transport" config option to specify the underlying transport.',
+                ),
             );
         }
 
         $to = $this->getConfig('to');
         if (!is_string($to) || $to === '') {
             throw new InvalidArgumentException(
-                'InterceptTransport requires "to" config option to specify the intercept email address.'
+                __d(
+                    'mail_interceptor',
+                    'InterceptTransport requires "to" config option to specify the intercept email address.',
+                ),
             );
         }
 
@@ -99,12 +105,15 @@ class InterceptTransport extends AbstractTransport
             Log::write(
                 'info',
                 sprintf(
-                    'Mail intercepted: redirected to=%s; original_to=%s; subject=%s',
+                    __d(
+                        'mail_interceptor',
+                        'Mail intercepted: redirected to=%s; original_to=%s; subject=%s',
+                    ),
                     $to,
                     $originalToList,
-                    $message->getSubject()
+                    $message->getSubject(),
                 ),
-                ['scope' => 'email']
+                ['scope' => 'email'],
             );
         }
 
@@ -113,8 +122,12 @@ class InterceptTransport extends AbstractTransport
         } catch (Throwable $e) {
             Log::write(
                 'error',
-                sprintf('InterceptTransport: underlying transport failed: %s', $e->getMessage()),
-                ['scope' => 'email']
+                __d(
+                    'mail_interceptor',
+                    'InterceptTransport: underlying transport failed: {0}',
+                    $e->getMessage(),
+                ),
+                ['scope' => 'email'],
             );
             throw $e;
         }

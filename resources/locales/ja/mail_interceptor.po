@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+
+msgid "InterceptTransport requires \"transport\" config option to specify the underlying transport."
+msgstr "InterceptTransport には基盤となるトランスポートを指定するための設定オプション \"transport\" が必要です。"
+
+msgid "InterceptTransport requires \"to\" config option to specify the intercept email address."
+msgstr "InterceptTransport にはインターセプト先のメールアドレスを指定するための設定オプション \"to\" が必要です。"
+
+msgid "Mail intercepted: redirected to=%s; original_to=%s; subject=%s"
+msgstr "メールをインターセプトしました: 転送先=%s; original_to=%s; 件名=%s"
+
+msgid "InterceptTransport: underlying transport failed: {0}"
+msgstr "InterceptTransport: 基盤トランスポートで失敗しました: {0}"

@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+
+msgid "InterceptTransport requires \"transport\" config option to specify the underlying transport."
+msgstr "InterceptTransport에는 기본 전송 방식을 지정하기 위한 \"transport\" 설정 옵션이 필요합니다."
+
+msgid "InterceptTransport requires \"to\" config option to specify the intercept email address."
+msgstr "InterceptTransport에는 가로챌 이메일 주소를 지정하기 위한 \"to\" 설정 옵션이 필요합니다."
+
+msgid "Mail intercepted: redirected to=%s; original_to=%s; subject=%s"
+msgstr "메일이 가로채졌습니다: 전송 대상=%s; original_to=%s; 제목=%s"
+
+msgid "InterceptTransport: underlying transport failed: {0}"
+msgstr "InterceptTransport: 기본 전송 실패: {0}"
