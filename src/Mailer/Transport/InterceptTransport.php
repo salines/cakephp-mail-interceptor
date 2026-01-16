@@ -89,16 +89,15 @@ class InterceptTransport extends AbstractTransport
 
         // Modify subject if configured
         $subjectPrefix = (string)$this->getConfig('subjectPrefix');
-        if ($subjectPrefix !== '' || $this->getConfig('includeOriginalInSubject')) {
-            if ($this->getConfig('includeOriginalInSubject') && $originalToList !== '') {
-                $prefix = '[' . $subjectPrefix . ': ' . $originalToList . '] ';
-            } elseif ($subjectPrefix !== '') {
-                $prefix = '[' . $subjectPrefix . '] ';
-            } else {
-                $prefix = '';
-            }
-            $message->setSubject($prefix . $originalSubject);
+        if ($subjectPrefix === '') {
+            $subjectPrefix = 'INTERCEPTED';
         }
+        if ($this->getConfig('includeOriginalInSubject') && $originalToList !== '') {
+            $prefix = '[' . $subjectPrefix . ': ' . $originalToList . '] ';
+        } else {
+            $prefix = '[' . $subjectPrefix . '] ';
+        }
+        $message->setSubject($prefix . $originalSubject);
 
         // Log interception if enabled
         if ($this->getConfig('logInterceptions')) {

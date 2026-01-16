@@ -393,7 +393,7 @@ class InterceptTransportTest extends TestCase
     /**
      * Test subject not modified when prefix is empty and includeOriginalInSubject is false
      */
-    public function testSubjectNotModifiedWhenBothOptionsDisabled(): void
+    public function testSubjectUsesDefaultPrefixWhenEmpty(): void
     {
         $this->transport->setConfig([
             'transport' => 'test_underlying',
@@ -410,7 +410,7 @@ class InterceptTransportTest extends TestCase
 
         $this->transport->send($message);
 
-        $this->assertEquals('Original Subject', $message->getSubject());
+        $this->assertEquals('[INTERCEPTED] Original Subject', $message->getSubject());
     }
 
     /**
@@ -437,6 +437,7 @@ class InterceptTransportTest extends TestCase
         $this->transport->send($message);
 
         $subject = $message->getSubject();
+        $this->assertStringContainsString('[INTERCEPTED:', $subject);
         $this->assertStringContainsString('user1@example.com', $subject);
         $this->assertStringContainsString('user2@example.com', $subject);
     }
