@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace MailInterceptor\Test\TestCase\Mailer\Transport;
+namespace CakeMailInterceptor\Test\TestCase\Mailer\Transport;
 
 use Cake\Log\Log;
 use Cake\Mailer\Message;
 use Cake\Mailer\TransportFactory;
+use CakeMailInterceptor\Mailer\Transport\InterceptTransport;
 use InvalidArgumentException;
-use MailInterceptor\Mailer\Transport\InterceptTransport;
 use PHPUnit\Framework\TestCase;
 
 /**

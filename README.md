@@ -1,5 +1,10 @@
 # CakePHP Mail Interceptor
 
+[![CI](https://github.com/salines/cakephp-mail-interceptor/actions/workflows/ci.yml/badge.svg)](https://github.com/salines/cakephp-mail-interceptor/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CakePHP 5.x](https://img.shields.io/badge/CakePHP-5.x-red.svg)](https://cakephp.org)
+[![PHP 8.1+](https://img.shields.io/badge/PHP-8.1%2B-blue.svg)](https://php.net)
+
 A CakePHP 5.x plugin that intercepts all outgoing emails and redirects them to a specified address. Perfect for development and staging environments where you want to test email functionality without sending emails to real users.
 
 ## Why Use This Plugin?
@@ -40,10 +45,12 @@ composer require salines/cakephp-mail-interceptor
 Load the plugin in your `src/Application.php`:
 
 ```php
+use CakeMailInterceptor\CakeMailInterceptorPlugin;
+
 public function bootstrap(): void
 {
     parent::bootstrap();
-    $this->addPlugin('MailInterceptor');
+    $this->addPlugin(CakeMailInterceptorPlugin::class);
 }
 ```
 
@@ -65,7 +72,7 @@ Configure the transport in your `config/app_local.php`:
 
     // Intercept transport (used in development/staging)
     'default' => [
-        'className' => \MailInterceptor\Mailer\Transport\InterceptTransport::class,
+        'className' => \CakeMailInterceptor\Mailer\Transport\InterceptTransport::class,
         'transport' => 'smtp', // The underlying transport to use
         'to' => 'dev@example.com', // Where all emails will be redirected
         'subjectPrefix' => 'DEV', // Optional: tag for subject line
@@ -143,12 +150,29 @@ A common pattern is to use the intercept transport only in non-production enviro
             // ... production config
         ]
         : [
-            'className' => \MailInterceptor\Mailer\Transport\InterceptTransport::class,
+            'className' => \CakeMailInterceptor\Mailer\Transport\InterceptTransport::class,
             'transport' => 'smtp',
             'to' => 'dev@example.com',
         ],
 ],
 ```
+
+## Testing
+
+```bash
+composer install
+composer test
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 

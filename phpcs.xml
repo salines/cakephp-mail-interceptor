@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="salines/cakephp-mail-interceptor">
+    <description>CakePHP coding standard</description>
+
+    <file>src</file>
+    <file>tests</file>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="p"/>
+
+    <rule ref="CakePHP"/>
+</ruleset>

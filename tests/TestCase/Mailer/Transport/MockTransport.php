@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace MailInterceptor\Test\TestCase\Mailer\Transport;
+namespace CakeMailInterceptor\Test\TestCase\Mailer\Transport;
 
 use Cake\Mailer\AbstractTransport;
 use Cake\Mailer\Message;
